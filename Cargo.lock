@@ -6,18 +6,43 @@ version = "0.0.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 
 [[package]]
+name = "ruspiro-gpio"
+version = "0.0.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+dependencies = [
+ "ruspiro-register 0.0.2 (registry+https://github.com/rust-lang/crates.io-index)",
+ "ruspiro-singleton 0.0.2 (registry+https://github.com/rust-lang/crates.io-index)",
+]
+
+[[package]]
 name = "ruspiro-kernel"
-version = "0.0.3"
+version = "0.0.2"
 dependencies = [
  "ruspiro-boot 0.0.3 (registry+https://github.com/rust-lang/crates.io-index)",
- "ruspiro-register 0.0.2 (registry+https://github.com/rust-lang/crates.io-index)",
+ "ruspiro-gpio 0.0.2 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
+
+[[package]]
+name = "ruspiro-lock"
+version = "0.0.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
 
 [[package]]
 name = "ruspiro-register"
 version = "0.0.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 
+[[package]]
+name = "ruspiro-singleton"
+version = "0.0.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+dependencies = [
+ "ruspiro-lock 0.0.2 (registry+https://github.com/rust-lang/crates.io-index)",
+]
+
 [metadata]
 "checksum ruspiro-boot 0.0.3 (registry+https://github.com/rust-lang/crates.io-index)" = "63c546003c223a35efc9e5a3b563524b0bc4886f42b5c1b5036e69b037ec562c"
+"checksum ruspiro-gpio 0.0.2 (registry+https://github.com/rust-lang/crates.io-index)" = "847c280c85a456950268083d55bcd45c9974fde2b2ad4d42b0bb5553a551c5fb"
+"checksum ruspiro-lock 0.0.2 (registry+https://github.com/rust-lang/crates.io-index)" = "747f64668f050f30cba05098c28bc29a732dbc6a85fa33c6a4f3f0bc8040ee5e"
 "checksum ruspiro-register 0.0.2 (registry+https://github.com/rust-lang/crates.io-index)" = "fda8916cf067f9c59518c6a32af1bef57d2c2a7a02cf75326954f0b6e1f0c3a1"
+"checksum ruspiro-singleton 0.0.2 (registry+https://github.com/rust-lang/crates.io-index)" = "4334df6bb425fc777b98ad4b8072d992a600995dfb26c1f40f3cf51f463c7c03"

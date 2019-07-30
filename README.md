@@ -55,6 +55,7 @@ The master branch of this repository always contains the latest version of the R
 
 | Version | Description / Features              |
 |---------|-------------------------------------|
+|[v0.0.2](https://github.com/RusPiRo/ruspiro-kernel/tree/v0.0.2)|This version demonstrates how to use the GPIO abstraction crate ``ruspiro-gpio`` for easy access to the GPIO Pins of the Raspberry Pi 3. This hides the register dangling away from the implementation and reduces the actual lines of code to implement the same feature as in v0.0.1. There are still 4 LED lit - one for each core - but in the kernel file with less code compared to the previous version.|
 |[v0.0.1](https://github.com/RusPiRo/ruspiro-kernel/tree/v0.0.1)|The first kind of feature release introducing the usage of MMIO register access with ``ruspiro-register`` crate. It shows how to access GPIO pins to lit a LED for each core being kicked off on Raspberry Pi.|
 |[v0.0.0](https://github.com/RusPiRo/ruspiro-kernel/tree/v0.0.0)|The initial playground release to verify your toolchain configuration and get something build to deploy it to real hardware (Raspberry Pi 3B+). It uses the ``ruspiro-boot`` crate to provide out-of-the-box bare metal booting of the Raspberri Pi in 32Bit mode.|
 
