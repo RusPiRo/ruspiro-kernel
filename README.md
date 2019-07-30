@@ -55,6 +55,7 @@ The master branch of this repository always contains the latest version of the R
 
 | Version | Description / Features              |
 |---------|-------------------------------------|
+|[v0.1.0](https://github.com/RusPiRo/ruspiro-kernel/tree/v0.1.0)|This version utilizes further crates:<ul><li>``ruspiro-mailbox``</li><li>``ruspiro-uart``</li><li>``ruspiro-console``</li></ul> This could be seen as a new baseline version as it no longer assumes a fix core rate when initializing the miniUART, but gets the real clock rate using the mailbox property tag interface.|
 |[v0.0.3](https://github.com/RusPiRo/ruspiro-kernel/tree/v0.0.3)|Having LED's signaling that the bare metal kernel is running might not be enough, so this version is using the UART to output debug information to a connected terminal console|
 |[v0.0.2](https://github.com/RusPiRo/ruspiro-kernel/tree/v0.0.2)|This version demonstrates how to use the GPIO abstraction crate ``ruspiro-gpio`` for easy access to the GPIO Pins of the Raspberry Pi 3. This hides the register dangling away from the implementation and reduces the actual lines of code to implement the same feature as in v0.0.1. There are still 4 LED lit - one for each core - but in the kernel file with less code compared to the previous version.|
 |[v0.0.1](https://github.com/RusPiRo/ruspiro-kernel/tree/v0.0.1)|The first kind of feature release introducing the usage of MMIO register access with ``ruspiro-register`` crate. It shows how to access GPIO pins to lit a LED for each core being kicked off on Raspberry Pi.|
