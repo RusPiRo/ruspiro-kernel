@@ -10,7 +10,14 @@ name = "ruspiro-kernel"
 version = "0.0.3"
 dependencies = [
  "ruspiro-boot 0.0.3 (registry+https://github.com/rust-lang/crates.io-index)",
+ "ruspiro-register 0.0.2 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
+
+[[package]]
+name = "ruspiro-register"
+version = "0.0.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
 
 [metadata]
 "checksum ruspiro-boot 0.0.3 (registry+https://github.com/rust-lang/crates.io-index)" = "63c546003c223a35efc9e5a3b563524b0bc4886f42b5c1b5036e69b037ec562c"
+"checksum ruspiro-register 0.0.2 (registry+https://github.com/rust-lang/crates.io-index)" = "fda8916cf067f9c59518c6a32af1bef57d2c2a7a02cf75326954f0b6e1f0c3a1"
