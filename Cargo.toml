@@ -1,11 +1,11 @@
 [package]
 name = "ruspiro-kernel"
 authors = ["André Borrmann <pspwizard@gmx.de>"]
-version = "0.0.2" # remember to update html_root_url
+version = "0.0.3" # remember to update html_root_url
 description = "This crate showcases the usage of the different RusPiRo crates to build a baremetal kernel for Raspberry Pi 3"
 license = "Apache-2.0"
-repository = "https://github.com/RusPiRo/ruspiro-kernel/tree/v0.0.2"
-documentation = "https://docs.rs/ruspiro-kernel/0.0.2"
+repository = "https://github.com/RusPiRo/ruspiro-kernel/tree/v0.0.3"
+documentation = "https://docs.rs/ruspiro-kernel/0.0.3"
 readme = "README.md"
 keywords = ["RusPiRo", "raspberrypi", "baremetal", "kernel", "32bit"]
 categories = ["no-std", "embedded"]
@@ -22,9 +22,6 @@ path = "src/kernel.rs"
 [dependencies]
 ruspiro-boot = { version = "0.0.3", features = ["with_panic", "with_exception"] }
 ruspiro-gpio = "0.0.2"
-
-# for local build only...
-#[patch."https://github.com/RusPiRo/ruspiro-boot"]
-#ruspiro-boot = { path = "../ruspiro-boot" } 
-
-
+ruspiro-uart = "0.0.3"
+ruspiro-singleton = "0.0.2"
+ruspiro-allocator = "0.0.2"
