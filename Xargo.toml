@@ -1,0 +1,4 @@
+# define specific additional dependencies in addition to the rust core crate when running xargo to create documentation
+# the release build done with cargo xbuild does not need this to properly compile and link all used additional crates
+[target.armv8-ruspiro.dependencies]
+alloc = {}

@@ -1,0 +1,29 @@
+[package]
+name = "ruspiro-kernel"
+authors = ["André Borrmann <pspwizard@gmx.de>"]
+version = "0.0.3" # remember to update html_root_url
+description = "This crate showcases the usage of the different RusPiRo crates to build a baremetal kernel for Raspberry Pi 3"
+license = "Apache-2.0"
+repository = "https://github.com/RusPiRo/ruspiro-kernel/tree/v0.0.3"
+documentation = "https://docs.rs/ruspiro-kernel/0.0.3"
+readme = "README.md"
+keywords = ["RusPiRo", "raspberrypi", "baremetal", "kernel", "32bit"]
+categories = ["no-std", "embedded"]
+edition = "2018"
+publish = false
+
+# indicate that this is a workspace comprising several folders
+[workspace]
+
+[[bin]]
+name = "kernel7"
+path = "src/kernel.rs"
+
+[dependencies]
+ruspiro-boot = { version = "0.0.3", features = ["with_panic", "with_exception"] }
+
+# for local build only...
+#[patch."https://github.com/RusPiRo/ruspiro-boot"]
+#ruspiro-boot = { path = "../ruspiro-boot" } 
+
+
