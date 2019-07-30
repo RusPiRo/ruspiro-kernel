@@ -21,6 +21,7 @@ path = "src/kernel.rs"
 
 [dependencies]
 ruspiro-boot = { version = "0.0.3", features = ["with_panic", "with_exception"] }
+ruspiro-register = "0.0.2"
 
 # for local build only...
 #[patch."https://github.com/RusPiRo/ruspiro-boot"]
