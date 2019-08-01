@@ -32,8 +32,7 @@ use ``rustup`` to install the target ``armv7-unknown-linux-gnueabihf`` which is 
 ```
 "rust.all_targets": false,
 "rust.build_on_save": true,
-"rust.target": "armv7-unknown-linux-gnueabihf",
-"rust.sysroot": "<path to project folder>/target/sysroot",
+"rust.target": "armv7-unknown-linux-gnueabihf"
 ```
 Please keep in mind, that the ``target/sysroot`` folder only exists after the first build of the project using ``> make all``.
 

@@ -4,3 +4,4 @@
 **/*.rs.bk
 **/release
 .vscode
+rls*.log
