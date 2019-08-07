@@ -2,7 +2,7 @@
 name = "ruspiro-kernel"
 authors = ["André Borrmann <pspwizard@gmx.de>"]
 version = "0.2.0" # remember to update html_root_url
-description = "This crate showcases the usage of the different RusPiRo crates to build a baremetal kernel for Raspberry Pi 3"
+description = "This crate showcases the usage of the different RusPiRo crates to build a bare metal kernel for Raspberry Pi 3"
 license = "Apache-2.0"
 repository = "https://github.com/RusPiRo/ruspiro-kernel/tree/v0.2.0"
 documentation = "https://docs.rs/ruspiro-kernel/0.2.0"
