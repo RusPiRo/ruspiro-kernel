@@ -26,4 +26,5 @@ install:
   - cargo install cargo-xbuild
 # add the build target used for Raspbarry Pi targeting builds
   - rustup target add armv7-unknown-linux-gnueabihf
+  - rustup component add rust-src
   - sudo chmod ugo+x ./travis-build.sh
