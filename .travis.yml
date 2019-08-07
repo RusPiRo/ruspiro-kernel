@@ -21,4 +21,5 @@ script:
 
 install:
   - sudo apt-get install gcc-arm-linux-gnueabihf g++-arm-linux-gnueabihf
+  - alias arm-eabi-gcc = arm-linux-gnueabihf-gcc
   - rustup target add armv7-unknown-linux-gnueabihf
