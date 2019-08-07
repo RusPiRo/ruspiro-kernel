@@ -17,7 +17,7 @@ TARGETDIR = target\\armv7-unknown-linux-gnueabihf\\release
 export CC = arm-eabi-gcc.exe
 export AR = arm-eabi-ar.exe
 export CFLAGS = -mfpu=neon-fp-armv8 -mfloat-abi=hard -march=armv8-a -Wall -O3 -nostdlib -nostartfiles -ffreestanding -mtune=cortex-a53
-export RUSTFLAGS = -C linker=arm-eabi-gcc.exe -C target-cpu=cortex-a53 -C target-feature=+a53,+fp-armv8,+v8,+vfp3,+d16,+thumb2,+neon -C link-arg=-nostartfiles -C link-arg=-T../ruspiro-boot/link.ld -C opt-level=3
+export RUSTFLAGS = -C linker=arm-eabi-gcc.exe -C target-cpu=cortex-a53 -C target-feature=+a53,+fp-armv8,+v8,+vfp3,+d16,+thumb2,+neon -C link-arg=-nostartfiles -C link-arg=-T../ruspiro-boot/link.ld -C opt-level=3 -C debuginfo=0
 # specific build step to concatenate the binarry into a file that contains marker the custom bootloader running an 
 # my raspberry Pi is looking for to deploy new build version without via UART without the need to toggle the SD card each
 # time.
