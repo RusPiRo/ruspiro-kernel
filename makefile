@@ -16,6 +16,7 @@ TARGETDIR = target\\armv7-unknown-linux-gnueabihf\\release
 # environment variables needed by cargo xbuild
 export CC = arm-eabi-gcc.exe
 export AR = arm-eabi-ar.exe
+export CARGO_TARGET_ARMV7_UNKNOWN_LINUX_GNUEABIHF_LINKER = arm-eabi-gcc.exe
 export CFLAGS = -mfpu=neon-fp-armv8 -mfloat-abi=hard -march=armv8-a -Wall -O3 -nostdlib -nostartfiles -ffreestanding -mtune=cortex-a53
 
 # specific build step to concatenate the binarry into a file that contains marker the custom bootloader running an 

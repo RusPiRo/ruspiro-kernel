@@ -19,10 +19,6 @@ matrix:
 script:
   cargo build --target armv7-unknown-linux-gnueabihf --verbose
 
-before_install:
-  - shopt -s expand_aliases
-
 install:
   - sudo apt-get install gcc-arm-linux-gnueabihf g++-arm-linux-gnueabihf
-  - alias arm-eabi-gcc="arm-linux-gnueabihf-gcc"
   - rustup target add armv7-unknown-linux-gnueabihf

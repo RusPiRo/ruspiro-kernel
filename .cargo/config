@@ -1,6 +1,5 @@
 # provide special configuration for the custom target
 [target.armv7-unknown-linux-gnueabihf]
-linker = "arm-eabi-gcc"
 rustflags = [
     "-C", "link-arg=-T../ruspiro-boot/link.ld",
     "-C", "link-arg=-nostartfiles",
