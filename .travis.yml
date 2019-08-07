@@ -14,9 +14,7 @@ matrix:
       env: 
         - TARGET=armv7-unknown-linux-gnueabihf
         - CFLAGS='-std=c11 -mfpu=neon-fp-armv8 -mfloat-abi=hard -march=armv8-a -Wall -O3 -nostartfiles -ffreestanding -mtune=cortex-a53'
-        - RUSTFLAGS='-C target-cpu=cortex-a53 -C target-feature=+a53,+fp-armv8,+v8,+vfp3,+d16,+thumb2,+neon'
-#        - CROSS_COMPILE=armv7-unknown-linux-gnueabihf
-        - CARGO_TARGET_ARMV7_UNKNOWN_LINUX_GNUEABIHF_LINKER=arm-linux-gnueabihf-gcc
+        - RUSTFLAGS='-C linker=arm-linux-gnueabihf-gcc -C target-cpu=cortex-a53 -C target-feature=+a53,+fp-armv8,+v8,+vfp3,+d16,+thumb2,+neon -C link-arg=-nostartfiles -C link-arg=-T../ruspiro-boot/link.ld -C opt-level=3'
 
 script:
   cargo build --target armv7-unknown-linux-gnueabihf --verbose
