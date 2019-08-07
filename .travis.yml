@@ -1,0 +1,30 @@
+# build only master branch on commit's
+# all other branches build on PullRequest creation
+branches:
+  only:
+    - master
+
+language: rust
+
+matrix:
+  fast_finish: true
+
+  include:
+    - rust: nightly
+
+script: ./travis-build.sh
+
+before_install:
+# clone ruspiro-boot before build as it contains the linker script needed..
+# the folder it will be cloned into is ./ruspiro-boot
+  - git clone https://github.com/RusPiRo/ruspiro-boot.git
+
+install:
+# install cross compiler toolchain
+  - sudo apt-get install gcc-arm-linux-gnueabihf g++-arm-linux-gnueabihf
+# install cargo xbuild to proper cross compile  
+  - cargo install cargo-xbuild
+# add the build target used for Raspbarry Pi targeting builds
+  - rustup target add armv7-unknown-linux-gnueabihf
+  - rustup component add rust-src
+  - sudo chmod ugo+x ./travis-build.sh
