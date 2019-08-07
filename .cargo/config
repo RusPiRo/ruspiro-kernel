@@ -1,10 +1,12 @@
 # provide special configuration for the custom target
-[target.armv8-ruspiro]
+[target.armv7-unknown-linux-gnueabihf]
 linker = "arm-eabi-gcc"
 rustflags = [
     "-C", "link-arg=-T../ruspiro-boot/link.ld",
+    "-C", "link-arg=-nostartfiles",
     "-C", "target-cpu=cortex-a53",
-	"-C", "target-feature=+a53,+fp-armv8",
+	"-C", "target-feature=+a53,+fp-armv8,+v8,+vfp3,+d16,+thumb2,+neon",
     "-C", "opt-level=3",
-    "-C", "debuginfo=0"
+    "-C", "debuginfo=0",
+#    "-C", "remark=all"
 ]

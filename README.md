@@ -2,6 +2,9 @@
 
 This crate compiles into a binary image file that could be put onto the SD card of a Raspberry Pi to run in baremetal mode. The kernel is build completely with ``#![no_std]`` and ``#![no_main]`` option.
 
+[![Travis-CI Status](https://api.travis-ci.org/RusPiRo/ruspiro-kernel.svg?branch=master)](https://travis-ci.org/RusPiRo/ruspiro-kernel)
+
+
 ## Pre-requisites
 
 The setup to build the kernel from this repository assumes cross-compiling from a Windows machine to Raspberry Pi ARM.
@@ -22,19 +25,20 @@ process.
 
 ### Rust
 
-The latest rust nightly build should be installed as well. Nightly is needed as not all features are currently supported in the stable build as of the time writing this. Based on the host system rust will be installed the corresponding build and build targets will be installed. Giving Windows as host machine "nightly-x86_64-pc-windows-gnu" would be the right choice for this. However, as we will build to a custom target there is no need install any additional pre-defined build target.
+The latest rust nightly build should be installed as well. Nightly is needed as not all features are currently supported in the stable build as of the time writing this. Based on the host system rust will be installed the corresponding build and build targets will be installed. Giving Windows as host machine "nightly-x86_64-pc-windows-gnu" would be the right choice for this. In addition the cross compile target need to be installed. Use ``rustup`` for this step:
+```
+> rustup target add armv7-unknown-linux-gnueabihf
+```
 
 #### Using RLS (Rust Language Server)
-When using the RLS (Rust Language Server) extension in Visual Studio Code the following settings in the ``settings.json`` will ensure it's properly working.
-As RLS would need a custom target specification file in each crate (also the dependend one usually downloaded from crates.io, and we cannot inject our's there) we should
-use ``rustup`` to install the target ``armv7-unknown-linux-gnueabihf`` which is the closest one to our custom one and allows the RLS to run with the depencies in place.
+When using the RLS (Rust Language Server) extension in Visual Studio Code the following settings in the ``settings.json``
+will ensure it's properly working with the target specification we use for our usual build.
 
 ```
 "rust.all_targets": false,
 "rust.build_on_save": true,
 "rust.target": "armv7-unknown-linux-gnueabihf"
 ```
-Please keep in mind, that the ``target/sysroot`` folder only exists after the first build of the project using ``> make all``.
 
 ## Building
 
@@ -42,7 +46,7 @@ To build the actual binary just call
 ```
 > make all
 ```
-from the root directory of your project. This will create the ``kernel7.img`` in the folder **[path to project]/target/armv8-ruspiro/release**
+from the root directory of your project. This will create the ``kernel7.img`` in the folder ``[path to project]/target/armv7-unknown-linux-gnueabihf/release``
 
 ## Deploy to Raspberry Pi
 
@@ -54,6 +58,7 @@ The master branch of this repository always contains the latest version of the R
 
 | Version | Description / Features              |
 |---------|-------------------------------------|
+|[v0.2.0](https://github.com/RusPiRo/ruspiro-kernel/tree/v0.2.0)|With this version we remove the need for the custom build target 'armv8-ruspiro'. Instead we use the ``armv7-unknown-linux-gnueabihf`` with some specific flags to successfully cross-compile for the Raspberry Pi. **New features**:<ul><li>Demonstration of the usage of the ``ruspiro-interrupt`` crate to implement interrupt handler</li><li>Use the new ``ruspiro-timer`` crate to blink the LED's</li></ul> As several used crates are quite heavy linked to the underlying hardware the specific's to the Raspberry Pi model could be activated with feature gates. Currently only Raspberry Pi 3 is supported. So the corresponding crates support the feature ``ruspiro_pi3`` which is for the time beeing active by default in the relevant crates.|
 |[v0.1.0](https://github.com/RusPiRo/ruspiro-kernel/tree/v0.1.0)|This version utilizes further crates:<ul><li>``ruspiro-mailbox``</li><li>``ruspiro-uart``</li><li>``ruspiro-console``</li></ul> This could be seen as a new baseline version as it no longer assumes a fix core rate when initializing the miniUART, but gets the real clock rate using the mailbox property tag interface.|
 |[v0.0.3](https://github.com/RusPiRo/ruspiro-kernel/tree/v0.0.3)|Having LED's signaling that the bare metal kernel is running might not be enough, so this version is using the UART to output debug information to a connected terminal console|
 |[v0.0.2](https://github.com/RusPiRo/ruspiro-kernel/tree/v0.0.2)|This version demonstrates how to use the GPIO abstraction crate ``ruspiro-gpio`` for easy access to the GPIO Pins of the Raspberry Pi 3. This hides the register dangling away from the implementation and reduces the actual lines of code to implement the same feature as in v0.0.1. There are still 4 LED lit - one for each core - but in the kernel file with less code compared to the previous version.|
