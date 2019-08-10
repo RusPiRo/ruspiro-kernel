@@ -78,7 +78,6 @@ name = "ruspiro-console"
 version = "0.1.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 dependencies = [
- "ruspiro-allocator 0.1.1 (registry+https://github.com/rust-lang/crates.io-index)",
  "ruspiro-singleton 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
@@ -92,8 +91,20 @@ dependencies = [
 ]
 
 [[package]]
-name = "ruspiro-interrupt"
+name = "ruspiro-i2c"
 version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+dependencies = [
+ "ruspiro-console 0.1.1 (registry+https://github.com/rust-lang/crates.io-index)",
+ "ruspiro-gpio 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "ruspiro-register 0.1.1 (registry+https://github.com/rust-lang/crates.io-index)",
+ "ruspiro-singleton 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "ruspiro-timer 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
+]
+
+[[package]]
+name = "ruspiro-interrupt"
+version = "0.1.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 dependencies = [
  "ruspiro-interrupt-macros 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -114,14 +125,7 @@ dependencies = [
 name = "ruspiro-kernel"
 version = "0.2.0"
 dependencies = [
- "ruspiro-boot 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "ruspiro-console 0.1.1 (registry+https://github.com/rust-lang/crates.io-index)",
- "ruspiro-gpio 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "ruspiro-interrupt 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "ruspiro-mailbox 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "ruspiro-register 0.1.1 (registry+https://github.com/rust-lang/crates.io-index)",
- "ruspiro-timer 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "ruspiro-uart 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "ruspiro-sdk 0.1.0",
 ]
 
 [[package]]
@@ -143,6 +147,22 @@ dependencies = [
 name = "ruspiro-register"
 version = "0.1.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
+
+[[package]]
+name = "ruspiro-sdk"
+version = "0.1.0"
+dependencies = [
+ "ruspiro-allocator 0.1.1 (registry+https://github.com/rust-lang/crates.io-index)",
+ "ruspiro-boot 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "ruspiro-console 0.1.1 (registry+https://github.com/rust-lang/crates.io-index)",
+ "ruspiro-gpio 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "ruspiro-i2c 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "ruspiro-interrupt 0.1.1 (registry+https://github.com/rust-lang/crates.io-index)",
+ "ruspiro-mailbox 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "ruspiro-register 0.1.1 (registry+https://github.com/rust-lang/crates.io-index)",
+ "ruspiro-timer 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "ruspiro-uart 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
+]
 
 [[package]]
 name = "ruspiro-singleton"
@@ -197,7 +217,8 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 "checksum ruspiro-boot 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)" = "7590b52cf957f60db4a39a39adb8a7d3a539d8121cd6d04da720738ab50bd9f7"
 "checksum ruspiro-console 0.1.1 (registry+https://github.com/rust-lang/crates.io-index)" = "4a7d50dde486f8fd3f91f5d468c0ab8e01bc5eecbd7b5bf2696bb2acfa5c5b26"
 "checksum ruspiro-gpio 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)" = "00c194a647e75715f420138441f0a553e21f092a111a1a593652341428b39ec4"
-"checksum ruspiro-interrupt 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)" = "942e793ea01d318538380ded62427b328b31ccf359b7f94d9443e1d72a95bf60"
+"checksum ruspiro-i2c 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)" = "927fc5bd1ba7f3b8f2524785c95bf4ad9122db7c64dae097d03aed43e86c5206"
+"checksum ruspiro-interrupt 0.1.1 (registry+https://github.com/rust-lang/crates.io-index)" = "607ad40b30a26dbc16292d530ead6980e3944318c6eebe4f4078f7c70d7db53b"
 "checksum ruspiro-interrupt-macros 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)" = "e3bde4a089a0e60bcc3622d9315ee28f130d08a47c60a252f11ccabd42342180"
 "checksum ruspiro-lock 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)" = "5655fe05fe4b90dc84698371cf0d7db487c6826933017ae199d908cb2a96e9bc"
 "checksum ruspiro-mailbox 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)" = "cb89e19a5dd5e9d28e17753583b3ac5bcd696d52620bd6dd5f56a86200223fbe"

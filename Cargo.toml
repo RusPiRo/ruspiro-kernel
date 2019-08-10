@@ -20,15 +20,12 @@ name = "kernel7"
 path = "src/kernel.rs"
 
 [dependencies]
-ruspiro-boot = { version = "0.1.0", features = ["with_panic", "with_exception"] }
-ruspiro-gpio = "0.1.0"
-ruspiro-register = "0.1.1"
-ruspiro-uart = { version = "0.1.0" }
-ruspiro-console = { version = "0.1.1", features = ["with_allocator"] }
-ruspiro-mailbox = "0.1.0"
-ruspiro-timer = "0.1.0"
-ruspiro-interrupt = "0.1.0"
+ruspiro-sdk = { path = "../ruspiro-sdk", features = [
+        "with_uart",
+        "with_console",
+        "with_i2c"
+    ] }
 
 [features]
 default = ["ruspiro_pi3"]
-ruspiro_pi3 = ["ruspiro-gpio/ruspiro_pi3", "ruspiro-mailbox/ruspiro_pi3", "ruspiro-timer/ruspiro_pi3", "ruspiro-uart/ruspiro_pi3", "ruspiro-interrupt/ruspiro_pi3"]
+ruspiro_pi3 = ["ruspiro-sdk/ruspiro_pi3"]

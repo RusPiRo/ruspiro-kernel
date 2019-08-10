@@ -1,6 +1,14 @@
 # RusPiRo Kernel (32Bit)
 
-This crate compiles into a binary image file that could be put onto the SD card of a Raspberry Pi to run in baremetal mode. The kernel is build completely with ``#![no_std]`` and ``#![no_main]`` option.
+This crate aims to be THE RusPiRo kernel somewhen in the future. At the time beeing it's used to verify the usage 
+and proper function of the different RusPiRo feature crates. The kernel is build completely with ``#![no_std]`` and ``#![no_main]`` option.
+ 
+# Dependencies
+ 
+To succsessfully build this crate for Raspberry Pi use ``xargo build`` with ``--target armv7-unknown-linux-gnueabihf``.
+Check out the [README.md](https://github.com/RusPiRo/ruspiro-kernel/blob/master/README.md) for further details.
+
+This crate compiles into a binary image file that could be put onto the SD card of a Raspberry Pi to run in baremetal mode. 
 
 [![Travis-CI Status](https://api.travis-ci.org/RusPiRo/ruspiro-kernel.svg?branch=master)](https://travis-ci.org/RusPiRo/ruspiro-kernel)
 
@@ -63,18 +71,8 @@ from the root directory of your project. This will create the ``kernel7.img`` in
 
 To deploy the baremetal kernel to the Rapsberry Pi, just copy the created ``kernel7.img`` file onto the root of a FAT32 formated SD card. This SD card should also contain the files ``bootcode.bin``, ``start.elf`` and ``fixup.dat`` that could be downloaded from the official Raspberry Pi [firmware github](https://github.com/raspberrypi/firmware/tree/master/boot). In case you plan to use additional features on the Rasperry Pi in the future (e.g. GPU, Bluetooth etc.) I would recommend to use the "_x" versions of the files when available. So choose ``bootcode.bin``, ``start_x.elf`` and ``fixup_x.dat``.
 
-## Versions / Releases
-
-The master branch of this repository always contains the latest version of the RusPiRo kernel. To follow how this one evolved and started incorporating features of the different RusPiRo-Crates you can access the different release versions.
-
-| Version | Description / Features              |
-|---------|-------------------------------------|
-|[v0.2.0](https://github.com/RusPiRo/ruspiro-kernel/tree/v0.2.0)|With this version we remove the need for the custom build target 'armv8-ruspiro'. Instead we use the ``armv7-unknown-linux-gnueabihf`` with some specific flags to successfully cross-compile for the Raspberry Pi. **New features**:<ul><li>Demonstration of the usage of the ``ruspiro-interrupt`` crate to implement interrupt handler</li><li>Use the new ``ruspiro-timer`` crate to blink the LED's</li></ul> As several used crates are quite heavy linked to the underlying hardware the specific's to the Raspberry Pi model could be activated with feature gates. Currently only Raspberry Pi 3 is supported. So the corresponding crates support the feature ``ruspiro_pi3`` which is for the time beeing active by default in the relevant crates.|
-|[v0.1.0](https://github.com/RusPiRo/ruspiro-kernel/tree/v0.1.0)|This version utilizes further crates:<ul><li>``ruspiro-mailbox``</li><li>``ruspiro-uart``</li><li>``ruspiro-console``</li></ul> This could be seen as a new baseline version as it no longer assumes a fix core rate when initializing the miniUART, but gets the real clock rate using the mailbox property tag interface.|
-|[v0.0.3](https://github.com/RusPiRo/ruspiro-kernel/tree/v0.0.3)|Having LED's signaling that the bare metal kernel is running might not be enough, so this version is using the UART to output debug information to a connected terminal console|
-|[v0.0.2](https://github.com/RusPiRo/ruspiro-kernel/tree/v0.0.2)|This version demonstrates how to use the GPIO abstraction crate ``ruspiro-gpio`` for easy access to the GPIO Pins of the Raspberry Pi 3. This hides the register dangling away from the implementation and reduces the actual lines of code to implement the same feature as in v0.0.1. There are still 4 LED lit - one for each core - but in the kernel file with less code compared to the previous version.|
-|[v0.0.1](https://github.com/RusPiRo/ruspiro-kernel/tree/v0.0.1)|The first kind of feature release introducing the usage of MMIO register access with ``ruspiro-register`` crate. It shows how to access GPIO pins to lit a LED for each core being kicked off on Raspberry Pi.|
-|[v0.0.0](https://github.com/RusPiRo/ruspiro-kernel/tree/v0.0.0)|The initial playground release to verify your toolchain configuration and get something build to deploy it to real hardware (Raspberry Pi 3B+). It uses the ``ruspiro-boot`` crate to provide out-of-the-box bare metal booting of the Raspberry Pi in 32Bit mode.|
+## Starting your own RusPiRo based kernel ?
+Check out the ``ruspiro-sdk`` crate at either [crates.io](https://crates.io/crates/ruspiro-skd) or the [github repo](https://github.com/RusPiRo/ruspiro-sdk)
 
 ## License
 This crate is licensed under MIT license ([LICENSE](LICENSE) or http://opensource.org/licenses/MIT)
