@@ -7,7 +7,7 @@
 #![doc(html_root_url = "https://docs.rs/ruspiro-kernel/0.2.0")]
 #![no_std]
 #![no_main]
-#![feature(asm)]
+#![feature(llvm_asm)]
 //! # RusPiRo kernel
 //! 
 //! This crate demonstrates and verifies the usage of the different RusPiRo crates. The current version does nothing
